@@ -1,4 +1,4 @@
-## .Net Core Web API with .Net Framework 3.1, EF Core, and SQL Server 2019
+## .Net Core Web API with .Net Framework 3.1, EF Core, SQL Server 2019 or MySQL 5.7.29
 
 ### This project was initially created using Visual Studio Code and later moved to Visual Studio 2019.
 
@@ -9,3 +9,15 @@
 - Download the project.
 - On terminal, `dotnet restore`
 - On terminal, `dotnet run`
+
+## MS SQL to MySQL
+
+- Connection string changed in appsettings.json to MySQL.
+  MS SQL connection string is `"Initial Catalog=CommanderDB; Data Source=DESKTOP-2ABFL9V;Integrated Security=True"`
+
+## Additonal Nuget for MySQL
+
+- Microsoft.EntityFrameworkCore.Tools v5.0.1
+- Pomelo.EntityFrameworkCore.MySql (version 5.0.0-alpha.2)
+
+## Database table generated using EF Core Code-First.
