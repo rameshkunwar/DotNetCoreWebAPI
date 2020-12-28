@@ -30,7 +30,9 @@ namespace Commander
         //here we will add Dependency injection
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<CommanderContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("DotNetCoreAppConnection")));
+            string dbConnectionString = Configuration.GetConnectionString("DotNetCoreAppConnection");
+            //services.AddDbContext<CommanderContext>(opt => opt.UseSqlServer(dbConnectionString));
+            services.AddDbContext<CommanderContext>(opt => opt.UseMySql(dbConnectionString, ServerVersion.AutoDetect(dbConnectionString)));
             
             services.AddControllers().AddNewtonsoftJson(x => {
                 x.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
