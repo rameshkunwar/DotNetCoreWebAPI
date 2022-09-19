@@ -12,14 +12,14 @@ namespace Commander.Data
 
         public SqlCommanderRepo(CommanderContext commanderContext)
         {
-            _context = commanderContext;
+            _context = commanderContext;          
+            _context.Database.EnsureCreated();
         }
 
         public void CreateCommand(Command cmd)
         {
             if (cmd == null)
                 throw new ArgumentNullException(nameof(cmd));
-
             _context.Commands.Add(cmd);
         }
 

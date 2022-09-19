@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using AutoMapper;
 using Commander.Data;
@@ -30,10 +31,15 @@ namespace Commander
         //here we will add Dependency injection
         public void ConfigureServices(IServiceCollection services)
         {
-            string dbConnectionString = Configuration.GetConnectionString("DotNetCoreAppConnection");
-            //services.AddDbContext<CommanderContext>(opt => opt.UseSqlServer(dbConnectionString));
-            services.AddDbContext<CommanderContext>(opt => opt.UseMySql(dbConnectionString, ServerVersion.AutoDetect(dbConnectionString)));
-            
+            //string dbConnectionString = Configuration.GetConnectionString("DotNetCoreAppConnection");
+            ////services.AddDbContext<CommanderContext>(opt => opt.UseSqlServer(dbConnectionString));
+            //services.AddDbContext<CommanderContext>(opt => opt.UseMySql(dbConnectionString, ServerVersion.AutoDetect(dbConnectionString)));
+
+            services.AddDbContext<CommanderContext>(opt => opt.UseSqlite("Filename=commanderDB.db", options =>
+            {
+                options.MigrationsAssembly(Assembly.GetExecutingAssembly().FullName);
+            }));
+
             services.AddControllers().AddNewtonsoftJson(x => {
                 x.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
             } );
