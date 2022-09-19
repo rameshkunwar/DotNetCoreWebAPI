@@ -1,4 +1,4 @@
-## .Net Core Web API with .Net Framework 3.1, EF Core, SQL Server 2019 or MySQL 5.7.29
+## .Net Core Web API with .Net Framework 3.1, EF Core, SQL Server 2019 or MySQL 5.7.29 or Sqlite
 
 ### This project was initially created using Visual Studio Code and later moved to Visual Studio 2019.
 
